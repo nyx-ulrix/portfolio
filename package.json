@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@studio-freight/lenis": "^1.0.42",
+    "framer-motion": "^12.4.7",
+    "sass": "^1.85.1"
+  }
+}

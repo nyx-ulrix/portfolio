@@ -1,32 +1,34 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// src/App.tsx
+import React from 'react';
+import { motion, useViewportScroll, useTransform } from 'framer-motion';
+import './styles/global.css';
 
-function App() {
-  const [count, setCount] = useState(0)
+const App: React.FC = () => {
+  const { scrollY } = useViewportScroll();
+
+  const y1 = useTransform(scrollY, [0, 500], [0, -100]);
+  const y2 = useTransform(scrollY, [0, 500], [0, -200]);
+  const y3 = useTransform(scrollY, [0, 500], [0, -300]);
 
   return (
-    <>
-      <div>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div id="root" className="container">
+      <section className="section">
+        <motion.div className="card" style={{ y: y1 }}>
+          Card 1
+        </motion.div>
+      </section>
+      <section className="section">
+        <motion.div className="card" style={{ y: y2 }}>
+          Card 2
+        </motion.div>
+      </section>
+      <section className="section">
+        <motion.div className="card" style={{ y: y3 }}>
+          Card 3
+        </motion.div>
+      </section>
+    </div>
+  );
+};
 
-export default App
+export default App;
